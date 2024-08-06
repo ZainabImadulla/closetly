@@ -1,22 +1,60 @@
-import logo from './logo.svg';
+import Home from './pages/home';
+import Landing from './pages/landing';
+import Login from './pages/login';
+import Register from './pages/register';
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Navigate,
+} from "react-router-dom"
+
+
 
 function App() {
+  const currentUser = false;
+  const user = {
+    firstName: 'Zainab',
+    lastName: 'Imadulla',
+  }
+  
+  const ProtectedRoute = ({ children }) => {
+    if (!currentUser) {
+      return <Navigate to="/login" />;
+    }
+    return children;
+  };
+  
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <div> 
+        <Landing/>
+      </div>,
+    },
+    {
+      path: "/register",
+      element: <Register/>
+    },
+    {
+      path: "/login",
+      element: <Login/>
+    },
+    {
+      path: "/closet",
+      element:
+      <ProtectedRoute> 
+        <Home user = {user}/>
+      </ProtectedRoute>,
+    }
+  ]);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RouterProvider router = {router}/>
     </div>
   );
 }
