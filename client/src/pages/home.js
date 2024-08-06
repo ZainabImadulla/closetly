@@ -5,8 +5,7 @@ import Top from "/Users/zainabimadulla/Desktop/closetly/client/src/images/t-shir
 import Jacket from "/Users/zainabimadulla/Desktop/closetly/client/src/images/jacket1.jpeg"
 import Navigation from "../components/navigation";
 import { AuthContext } from "../context/authContext";
-export default function Home({user}){
-    const currentUser = useContext(AuthContext)
+export default function Home(){
     const items = [
         {
             id: 1,
@@ -33,9 +32,11 @@ export default function Home({user}){
             img: Jacket
         }
     ];
+
+    const {currentUser} = useContext(AuthContext)
     return (
         <div className = "flex flex-col">
-            <Navigation user = {user}/>
+            <Navigation/>
             <div className = "pr-3 pl-3 sm:pr-12 sm:pl-12 pt-5 text-2xl"> 
                 <h1>{currentUser.firstname}'s Closet</h1>
                 <div className="divider"></div>

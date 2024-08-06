@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../context/authContext";
 
-export default function Navigation({user}) {
+export default function Navigation() {
 
     const {currentUser} = useContext(AuthContext)
     return (
