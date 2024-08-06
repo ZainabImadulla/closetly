@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import Pant1 from "/Users/zainabimadulla/Desktop/closetly/client/src/images/pants49.jpeg"
 import Pant2 from "/Users/zainabimadulla/Desktop/closetly/client/src/images/pants12.jpeg"
 import Top from "/Users/zainabimadulla/Desktop/closetly/client/src/images/t-shirt.jpeg"
 import Jacket from "/Users/zainabimadulla/Desktop/closetly/client/src/images/jacket1.jpeg"
 import Navigation from "../components/navigation";
+import { AuthContext } from "../context/authContext";
 export default function Home({user}){
+    const currentUser = useContext(AuthContext)
     const items = [
         {
             id: 1,
@@ -35,7 +37,7 @@ export default function Home({user}){
         <div className = "flex flex-col">
             <Navigation user = {user}/>
             <div className = "pr-3 pl-3 sm:pr-12 sm:pl-12 pt-5 text-2xl"> 
-                <h1>{user.firstName}'s Closet</h1>
+                <h1>{currentUser.firstname}'s Closet</h1>
                 <div className="divider"></div>
                 <div className = "flex flex-wrap gap-2 sm:gap-4">
                     <button className="flex-initial btn btn-sm lg:w-40 btn-outline text-secondary"> all </button>

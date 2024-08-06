@@ -11,6 +11,8 @@ app.use(cookieParser());
 
 
 app.use("/backend/auth", authRoutes)
+
+
 app.listen(8800, () => {
     console.log("Connected!")
 })

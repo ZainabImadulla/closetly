@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ErrorMessage from "../components/ErrorMessage";
 import axios from "axios"
+import { AuthContext } from "../context/authContext";
 export default function Login(){
     const [input, setInput] = useState({
         email: "",
@@ -17,16 +18,20 @@ export default function Login(){
         setInput(prev => ({...prev, [e.target.name]: e.target.value}))
     }
     
-
+    const {login} = useContext(AuthContext);
+    
     const handleClick = async (e) => {
+        e.preventDefault();
         try {
-            const res = await axios.post("/auth/login", input)
+            await login(input)
             navigate("/closet");
         } catch(err){
             setError(err.response.data)
         }
     }
 
+
+    console.log(input)
     return (
         <div className = "flex justify-center items-center p-3 sm:p-24 h-screen ">
             <div className="card bg-base-100 w-96 shadow-xl">
