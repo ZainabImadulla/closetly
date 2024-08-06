@@ -45,9 +45,7 @@ function App() {
     {
       path: "/closet",
       element:
-      <ProtectedRoute> 
-        <Home user = {user}/>
-      </ProtectedRoute>,
+      <Home user = {user}/>
     }
   ]);
 

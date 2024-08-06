@@ -1,8 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ErrorMessage from "../components/ErrorMessage";
-
+import axios from "axios"
 export default function Login(){
     const [input, setInput] = useState({
         email: "",
@@ -11,14 +11,20 @@ export default function Login(){
 
     const [error, setError] = useState(null)
 
+    const navigate = useNavigate();
+
     const handleInput = e => {
         setInput(prev => ({...prev, [e.target.name]: e.target.value}))
     }
     
 
     const handleClick = async (e) => {
-        e.preventDefault()
-
+        try {
+            const res = await axios.post("/auth/login", input)
+            navigate("/closet");
+        } catch(err){
+            setError(err.response.data)
+        }
     }
 
     return (
