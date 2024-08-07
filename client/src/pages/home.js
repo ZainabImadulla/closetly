@@ -1,11 +1,74 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect, useReducer } from "react";
 import Pant1 from "/Users/zainabimadulla/Desktop/closetly/client/src/images/pants49.jpeg"
 import Pant2 from "/Users/zainabimadulla/Desktop/closetly/client/src/images/pants12.jpeg"
 import Top from "/Users/zainabimadulla/Desktop/closetly/client/src/images/t-shirt.jpeg"
 import Jacket from "/Users/zainabimadulla/Desktop/closetly/client/src/images/jacket1.jpeg"
 import Navigation from "../components/navigation";
 import { AuthContext } from "../context/authContext";
+import axios from "axios";
+import {Image} from 'cloudinary-react'
 export default function Home(){
+    const [description, setDescription] = useState("");
+
+    const [clothing, setClothing] = useState([]);
+    const [image, setImage] = useState("");
+
+    const handleDescription = e => {
+        setDescription(e.target.value);
+    }
+
+    const handleImage = e => {
+        setImage(e.target.files[0]);
+    }
+
+    const [rerender, doRerender] = useReducer(x=> x+1, 0);
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("file", image);
+        formData.append("upload_preset", "closet");
+        try {
+            document.getElementById('my_modal_1').close();
+            document.getElementById('loading').showModal();
+            const res = await axios.post("http://api.cloudinary.com/v1_1/dnldvhhyw/image/upload", formData)
+            console.log(res);
+            const imageURL =  res.data.url;
+            console.log(imageURL);
+
+            const input = {
+                description: description,
+                img: imageURL
+            }
+            console.log(input)
+            try {
+                const res = await axios.post("/clothing/add", input)
+                console.log("clothing successfully added!")
+                document.getElementById('loading').close();
+                doRerender();
+            } catch (err){
+                console.log(err.response.data)
+            }
+        } catch(err){
+        }
+    }
+
+    useEffect(()=> {
+        const fetchAllClothing = async () => {
+            try{
+                const res = await axios.get("/clothing/all")
+                setClothing(res.data)
+                console.log(res.data)
+            } catch(err){
+                console.log(err)
+            }
+        }
+
+        fetchAllClothing()
+    },[rerender])
+
+    
     const items = [
         {
             id: 1,
@@ -75,24 +138,30 @@ export default function Home(){
                         <form className = "flex flex-col justify-center items-center">
                             <h1 className = "pb-5"> Add a new clothing item:</h1>
                             <div className = "pb-5 w-full max-w-xs">
-                                <input type="text" placeholder="description" className="input input-bordered w-full max-w-xs rounded-3xl" />
+                                <input type="text" placeholder="description" className="input input-bordered w-full max-w-xs rounded-3xl" onChange = {handleDescription} />
                             </div>
                             <div className = "pb-5">
                                 <input
                                 type="file"
-                                className="file-input file-input-bordered file-input-secondary w-full max-w-xs rounded-3xl text-xs" />
+                                className="file-input file-input-bordered file-input-secondary w-full max-w-xs rounded-3xl text-xs" onChange = {handleImage} />
                             </div>
-                            <button className="btn bg-secondary rounded-3xl">submit</button>
+                            <button className="btn bg-secondary rounded-3xl" onClick = {handleSubmit}>submit</button>
                         </form>
                     </div>
                 </dialog>
-                {items.map((item) => (
+
+                <dialog id="loading" className="modal">
+                    <div className="flex flex-col w-1/4 modal-box items-center justify-center">
+                        <span className="loading loading-spinner loading-lg"></span>
+                    </div>
+                </dialog>
+                {clothing.slice(0).reverse().map((item) => (
                     <div className = "card card-compact bg-base-200 w-32 md:w-64" key = {item.id}> 
                         <figure>
-                            <img src = {item.img} alt = ""/>
+                            <Image src = {item.img} alt = ""/>
                         </figure>
                             <div className = "card-body text-nuetral">
-                                <h2 className = "text-base text-xs"> {item.title} </h2>
+                                <h2 className = "text-base text-xs"> {item.description} </h2>
                             </div>
                     </div>
                 ))}
