@@ -14,7 +14,7 @@ Download Node.js and Git
 ## Installation
 
 1. Fork and Clone the Project
-Follow the following instructions in the console/terminal:
+(Follow the following instructions in the console/terminal)
 2. cd to client directory within project
 3. run npm install to install all dependencies
 4. run npm start to start front-end server
