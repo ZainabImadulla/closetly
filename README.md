@@ -69,6 +69,6 @@ Download Node.js and Git
    - [Google CoLab Notebook with Model](https://colab.research.google.com/drive/1gl_GrBTrZr8H8i-yyKviSznHjEVlycWG?usp=sharing)
    - [Github Repository with API created with FastAPI](https://github.com/ZainabImadulla/clothing_recognition_api)
    
-## Authors
+# Authors
 Zainab Imadulla - Computer Science student at Northeastern University 
 
