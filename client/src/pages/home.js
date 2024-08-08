@@ -84,7 +84,35 @@ export default function Home(){
         fetchAllClothing()
     },[rerender])
 
+    const handleTops = async () => {
+        try{
+            const res = await axios.get("/clothing/tops")
+            setClothing(res.data)
+            console.log(res.data)
+        } catch(err){
+            console.log(err)
+        }
+    }
 
+    const handleBottoms = async () => {
+        try{
+            const res = await axios.get("/clothing/bottoms")
+            setClothing(res.data)
+            console.log(res.data)
+        } catch(err){
+            console.log(err)
+        }
+    }
+
+    const handleShoes = async () => {
+        try{
+            const res = await axios.get("/clothing/shoes")
+            setClothing(res.data)
+            console.log(res.data)
+        } catch(err){
+            console.log(err)
+        }
+    }
 
     
     const {currentUser} = useContext(AuthContext)
@@ -95,14 +123,14 @@ export default function Home(){
                 <h1>{currentUser.firstname}'s Closet</h1>
                 <div className="divider"></div>
                 <div className = "flex flex-wrap gap-2 sm:gap-4">
-                    <button className="flex-initial btn btn-sm lg:w-40 btn-outline text-secondary"> all </button>
-                    <button className="flex-initial btn btn-sm lg:w-40 btn-outline btn-primary"> tops </button>
-                    <button className="flex-initial btn btn-sm lg:w-40 btn-outline btn-primary"> bottoms </button>
-                    <button className="flex-initial btn btn-sm lg:w-40 btn-outline btn-primary"> shoes </button>
+                    <button className="flex-initial btn btn-sm lg:w-40 btn-outline text-secondary"onClick = {doRerender}> all </button>
+                    <button className="flex-initial btn btn-sm lg:w-40 btn-outline btn-primary" onClick={handleTops}> tops </button>
+                    <button className="flex-initial btn btn-sm lg:w-40 btn-outline btn-primary"  onClick={handleBottoms}> bottoms </button>
+                    <button className="flex-initial btn btn-sm lg:w-40 btn-outline btn-primary"  onClick={handleShoes}> shoes </button>
                 </div>
                 <div className="divider"></div>
             </div>
-            <div className = "flex flex-wrap pr-3 pl-3 sm:pr-12 sm:pl-12 gap-4 sm:gap-8 m-auto">
+            <div className = "flex flex-wrap pr-3 pl-3 sm:pr-12 sm:pl-12 gap-4 sm:gap-8">
                 <div className="flex card card-compact bg-base-100 w-32 md:w-64 justify-center items-center">
                     <button className="btn btn-circle btn-outline"  onClick={()=>document.getElementById('my_modal_1').showModal()}>
                     <svg
