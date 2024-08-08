@@ -25,7 +25,8 @@ Download Node.js and Git
 
    
 ## Built With
-- React.js -> the framework used for front-end development
+- **React.js**
+   the framework used for front-end development
 - TailwindCSS -> CSS framework used for styling
 - DaisyUI -> Component Library for TailwindCSS
 - MySQL -> Database Managment System 
