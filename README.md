@@ -9,7 +9,7 @@ INSERT DEMO HERE
 
 ## Prerequisites
 
-1. Make sure you have node.js installed
+Download Node.js and Git
 
 ## Installation
 
