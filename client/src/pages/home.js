@@ -23,7 +23,7 @@ export default function Home(){
 
     const [rerender, doRerender] = useReducer(x=> x+1, 0);
 
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
