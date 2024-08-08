@@ -62,7 +62,10 @@ Download Node.js and Git
   A web framework used for handling HTTP requests to the MySQL database. 
 
 - **Node.js**  
-  The runtime environment used to build the backend of the application. 
+  The runtime environment used to build the backend of the application.
+
+- **Cloudinary**
+  Used to upload and store the images provided by the user. 
 
 # Image Classification Model
    A really cool part of this application was the addition of a machine learning model that categorizes the user's clothing. The model is a neural newtork that was created, trained, and tested using Tensorflow and Keras. The dataset used for taining and testing this model was FashionMNSIT. The model I created achieved a 94.11% accuracy on the training set and a 89.75% accuracy on the testing set. As this model was trained with the FashionMNSIT dataset it can misclasify images provided by a user of the website. The best way to address this error would be to increase the training set, but this would be extremely time consuming and difficult as a student, and unnecessary for this personal project. 
