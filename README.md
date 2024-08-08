@@ -64,7 +64,11 @@ Download Node.js and Git
 - **Node.js**  
   The runtime environment used to build the backend of the application. 
 
-
+# Image Classification Model
+   A really cool part of this application was the addition of a machine learning model that categorizes the user's clothing. The model is a neural newtork that was created, trained, and tested using Tensorflow and Keras. The dataset used for taining and testing this model was FashionMNSIT.The model I created achieved a 94.11% accuracy on the training set and a 89.75% accuracy on the testing set. As this model was trained with the FashionMNSIT dataset it can have misclasify images provided by the user of the website. The best way to address this error would be to increase the training set, but this would be extremely time consuming and difficult as a student, and not necessary for this personal project. 
+   [Google CoLab Notebook with Model](https://colab.research.google.com/drive/1gl_GrBTrZr8H8i-yyKviSznHjEVlycWG?usp=sharing)
+   [Github Repository with API created with FastAPI](https://github.com/ZainabImadulla/clothing_recognition_api)
+   
 ## Authors
 Zainab Imadulla - Computer Science student at Northeastern University 
 
