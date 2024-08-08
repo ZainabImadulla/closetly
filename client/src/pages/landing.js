@@ -5,34 +5,10 @@ import Pant2 from "/Users/zainabimadulla/Desktop/closetly/client/src/images/pant
 import Top from "/Users/zainabimadulla/Desktop/closetly/client/src/images/t-shirt.jpeg"
 import Jacket from "/Users/zainabimadulla/Desktop/closetly/client/src/images/jacket1.jpeg"
 import { NavLink } from "react-router-dom";
+import ClothingRecognitionAI from "../components/clothingRecognitionAI";
+
 
 export default function Landing(){
-    const items = [
-        {
-            id: 1,
-            title: "Dark Wash Jeans",
-            type: "pant",
-            img: Pant1
-        },
-        {
-            id: 2,
-            title: "White Bell Bottom Jeans",
-            type: "pant",
-            img: Pant2
-        },
-        {
-            id: 3,
-            title: "Black Graphic Tee",
-            type: "top",
-            img: Top
-        },
-        {
-            id: 4,
-            title: "White Patagonia Jacket",
-            type: "jacket",
-            img: Jacket
-        }
-    ];
     return (
         <div className = 'h-screen'>
             <div className="navbar bg-base-200">
