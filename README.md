@@ -25,19 +25,43 @@ Download Node.js and Git
 
    
 ## Built With
-- **React.js**
-   the framework used for front-end development
-- TailwindCSS -> CSS framework used for styling
-- DaisyUI -> Component Library for TailwindCSS
-- MySQL -> Database Managment System 
-- FastAPI -> Web framework used to build api used for classyfing user's image.
-- AmazonAWS -> Used to create an elastic web container that deployed the api created for classying image.
-- Tensorflow -> Library used for creating machine learning model. 
-- Keras -> Used Keras's categorical api to design a neural network, train and then test. 
-- Docker -> Used to containerize and then deploy the machine learning api to amazon aws
-- Axios -> Used to make queries to MySQL database and machine learning api
-- Express -> Used to handle http requests to the MySQL database
-- Node.js -> Used while creating the backend of the application
+
+- **React.js**  
+  A JavaScript library used for building the front-end of the application.
+
+- **TailwindCSS**  
+  A CSS framework used for styling the application's front-end. 
+
+- **DaisyUI**  
+  A component library for TailwindCSS that offers pre-designed UI components. This helped to streamline the process of creating an aesthetically pleasing application. 
+
+- **MySQL**  
+  A relational database management system used for storing and managing application data. MySQL handled data persistence and retrieval for the project.
+
+- **FastAPI**  
+  A modern web framework used to build the API responsible for classifying user images. 
+
+- **Amazon AWS**  
+  Used to create and manage an Elastic Container Service (ECS) to deploy the FastAPI application.
+
+- **TensorFlow**  
+  The library used for creating and training the image classification model. 
+
+- **Keras**  
+  Utilized Keras’s categorical API to design, train, and test a neural network model.
+
+- **Docker**  
+  Used to containerize the machine learning API and deploy it to Amazon AWS. 
+
+- **Axios**  
+  Used for making HTTP queries to the MySQL database and interacting with the machine learning API.
+
+- **Express**  
+  A web framework used for handling HTTP requests to the MySQL database. 
+
+- **Node.js**  
+  The runtime environment used to build the backend of the application. 
+
 
 ## Authors
 Zainab Imadulla - Computer Science student at Northeastern University 
