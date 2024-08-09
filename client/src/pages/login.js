@@ -31,7 +31,7 @@ export default function Login(){
     }
 
 
-    console.log(input)
+
     return (
         <div className = "flex justify-center items-center p-3 sm:p-24 h-screen ">
             <div className="card bg-base-100 w-96 shadow-xl">

@@ -3,7 +3,7 @@ import Navigation from "../components/navigation";
 import { AuthContext } from "../context/authContext";
 import axios from "axios";
 import {Image} from 'cloudinary-react';
-import ClothingRecognitionAI from "../components/clothingRecognitionAI";
+
 
 export default function Home(){
     const [description, setDescription] = useState("");
@@ -33,12 +33,10 @@ export default function Home(){
             document.getElementById('loading').showModal();
             const res = await axios.post("http://api.cloudinary.com/v1_1/dnldvhhyw/image/upload", formData)
             const imageURL =  res.data.url;
-            console.log(imageURL);
             const imgData = {
                 "text": imageURL
             }
             try {
-                console.log("finding classification")
                 const res = await axios.post("http://3.26.221.210/predict", imgData);
                 let classification = res.data.clothing;
                 if(classification == "shirt" || classification == "pullover" || classification == "dress"
@@ -51,7 +49,6 @@ export default function Home(){
                 }else if(classification == "dress"){
                     classification = "dress"
                 }
-                console.log(classification);
                 const input = {
                     description: description,
                     img: imageURL,
@@ -59,7 +56,6 @@ export default function Home(){
                 }
                 try {
                     const res = await axios.post("/clothing/add", input)
-                    console.log("clothing successfully added!")
                     document.getElementById('loading').close();
                     doRerender();
                     clearForms();
@@ -80,7 +76,6 @@ export default function Home(){
             try{
                 const res = await axios.get("/clothing/all")
                 setClothing(res.data)
-                console.log(res.data)
             } catch(err){
                 console.log(err)
             }
@@ -92,7 +87,6 @@ export default function Home(){
         try{
             const res = await axios.get("/clothing/tops")
             setClothing(res.data)
-            console.log(res.data)
         } catch(err){
             console.log(err)
         }
@@ -102,7 +96,6 @@ export default function Home(){
         try{
             const res = await axios.get("/clothing/bottoms")
             setClothing(res.data)
-            console.log(res.data)
         } catch(err){
             console.log(err)
         }
@@ -112,10 +105,8 @@ export default function Home(){
         try{
             const res = await axios.get("/clothing/shoes")
             setClothing(res.data)
-            console.log(res.data)
         } catch(err){
             console.log(err)
-            console.log(clothing.length)
         }
     }
 

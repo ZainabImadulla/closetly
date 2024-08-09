@@ -44,7 +44,7 @@ export default function Register(){
                                 <input type="text" name = "email" placeholder="email" className="input input-bordered w-full max-w-xs rounded-3xl"  onChange = {handleInput} />
                             </div>
                             <div className = "pb-5 w-full max-w-xs">
-                                <input type="text" name = "password" placeholder="password" className="input input-bordered w-full max-w-xs rounded-3xl"  onChange = {handleInput} />
+                                <input type="password" name = "password" placeholder="password" className="input input-bordered w-full max-w-xs rounded-3xl"  onChange = {handleInput} />
                             </div>
                            
                             <button className="btn bg-secondary rounded-3xl" onClick = {handleClick}>Sign Up</button>
