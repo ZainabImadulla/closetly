@@ -1,12 +1,6 @@
 import React from "react";
 import "/Users/zainabimadulla/Desktop/closetly/client/src/index.css"
-import Pant1 from "/Users/zainabimadulla/Desktop/closetly/client/src/images/pants49.jpeg"
-import Pant2 from "/Users/zainabimadulla/Desktop/closetly/client/src/images/pants12.jpeg"
-import Top from "/Users/zainabimadulla/Desktop/closetly/client/src/images/t-shirt.jpeg"
-import Jacket from "/Users/zainabimadulla/Desktop/closetly/client/src/images/jacket1.jpeg"
 import { NavLink } from "react-router-dom";
-import ClothingRecognitionAI from "../components/clothingRecognitionAI";
-
 
 export default function Landing(){
     return (
@@ -24,7 +18,7 @@ export default function Landing(){
                     <div className = "text-center lg:text-left">
                         <h1 className = "font-calistoga text-4xl sm:text-6xl sm:text-nowrap"> Welcome to</h1>
                         <h1 className = "font-calistoga text-4xl sm:text-6xl"> Closetly</h1>
-                        <p className = "pt-5"> an easy-to-use virtual closet to keep track of
+                        <p className = "pt-5"> An easy-to-use virtual closet to keep track of
                             all your clothes and make outfit planning that much
                             easier!
                         </p>

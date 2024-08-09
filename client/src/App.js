@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import Home from './pages/home';
 import Landing from './pages/landing';
 import Login from './pages/login';
@@ -6,14 +7,14 @@ import Register from './pages/register';
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
   Navigate,
 } from "react-router-dom"
+import { AuthContext } from './context/authContext';
 
 
 
 function App() {
-  const currentUser = false;
+  const currentUser = useContext(AuthContext)
   const user = {
     firstName: 'Zainab',
     lastName: 'Imadulla',
@@ -45,7 +46,9 @@ function App() {
     {
       path: "/closet",
       element:
-      <Home user = {user}/>
+      <ProtectedRoute>
+        <Home user = {user}/>
+      </ProtectedRoute>
     }
   ]);
 
