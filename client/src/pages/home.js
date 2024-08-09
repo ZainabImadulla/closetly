@@ -20,6 +20,9 @@ export default function Home(){
 
     const [rerender, doRerender] = useReducer(x=> x+1, 0);
 
+    const clearForms = () => {
+        document.getElementById("clothing-submit").reset();
+    }
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
@@ -59,6 +62,7 @@ export default function Home(){
                     console.log("clothing successfully added!")
                     document.getElementById('loading').close();
                     doRerender();
+                    clearForms();
                 } catch (err){
                     console.log(err.response.data)
                 }
@@ -151,11 +155,11 @@ export default function Home(){
                             <form method="dialog">
                                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                             </form>
-                            <ul className="steps steps-vertical lg:steps-horizontal">
+                            <ul className="steps steps-horizontal pb-5">
                                 <li className="step step-primary"></li>
                                 <li className="step"></li>
                             </ul>
-                            <form className = "flex flex-col justify-center items-center">
+                            <form id = "clothing-submit" className = "flex flex-col justify-center items-center">
                                 <h1 className = "pb-5"> Add a new clothing item:</h1>
                                 <div className = "pb-5 w-full max-w-xs">
                                     <input type="text" placeholder="description" className="input input-bordered w-full max-w-xs rounded-3xl" onChange = {handleDescription} />
@@ -175,7 +179,7 @@ export default function Home(){
                                 <li className="step step-primary"></li>
                                 <li className="step step-primary"></li>
                             </ul>
-                            <p>classifying the image with ai!</p>
+                            <p className = "pb-8">classifying the image with ai!</p>
                             <span className="loading loading-spinner loading-lg"></span>
                         </div>
                     </dialog>
