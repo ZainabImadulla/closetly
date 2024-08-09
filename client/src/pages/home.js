@@ -115,6 +115,7 @@ export default function Home(){
             console.log(res.data)
         } catch(err){
             console.log(err)
+            console.log(clothing.length)
         }
     }
 
@@ -135,7 +136,7 @@ export default function Home(){
                 <div className="divider"></div>
             </div>
             <div className = "flex flex-wrap pr-3 pl-3 sm:pr-12 sm:pl-12 gap-4 sm:gap-8">
-                <div className="flex card card-compact bg-base-100 w-32 md:w-64 justify-center items-center">
+                <div className={`flex card card-compact bg-base-100 w-32 md:w-64 items-center justify-center ${clothing.length === 0 ? 'h-80' : ''}`} >
                     <button className="btn btn-circle btn-outline"  onClick={()=>document.getElementById('my_modal_1').showModal()}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
