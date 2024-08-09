@@ -8,8 +8,8 @@ console.log(process.env.MYSQL_ROOT_PASSWORD);
 
 export const db =  mysql.createConnection({
     host : "localhost",
-    user : "root",
-    password: process.env.MYSQL_ROOT_PASSWORD,
+    user : "closet-app-user",
+    password: "dosxos-wijta3-somrYr",
     database: "closet_application"
 
 })
