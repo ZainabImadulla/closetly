@@ -74,3 +74,12 @@ export const postClothing = (req, res) => {
         })
     })
 }
+
+export const deleteItem = (req, res) => {
+    const q = "DELETE FROM clothes WHERE id = ?"
+
+    db.query(q, [req.params.id], (err,data) => {
+        if(err) return res.json(err)
+        return res.json("book deleted")
+    })
+}

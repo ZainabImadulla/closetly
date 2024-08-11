@@ -71,6 +71,14 @@ export default function Home(){
         
     }
 
+    const handleDelete = async (id) => {
+        try {
+            const res = await axios.delete("/clothing/" + id)
+            doRerender();
+        } catch (err){
+            console.log(err);
+        }
+    }
     useEffect(()=> {
         const fetchAllClothing = async () => {
             try{
@@ -178,6 +186,7 @@ export default function Home(){
                 </div>
                 {clothing.slice(0).reverse().map((item) => (
                     <div className = "card card-compact bg-base-200 w-32 md:w-64" key = {item.id}> 
+                          <button className="btn btn-xs md:btn-sm btn-circle base-100 absolute right-1 top-1" onClick = {() => handleDelete(item.id)}>✕</button>
                         <figure>
                             <Image src = {item.img} alt = ""/>
                         </figure>

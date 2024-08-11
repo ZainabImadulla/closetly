@@ -1,5 +1,5 @@
 import express from "express"
-import { getAllClothing, getBottoms, getShoes, getTops, postClothing } from "../controllers/clothingController.js"
+import { deleteItem, getAllClothing, getBottoms, getShoes, getTops, postClothing } from "../controllers/clothingController.js"
 
 const router = express.Router()
 
@@ -8,6 +8,6 @@ router.post("/add", postClothing)
 router.get("/tops", getTops)
 router.get("/bottoms", getBottoms)
 router.get("/shoes", getShoes)
-
+router.delete("/:id", deleteItem)
 
 export default router
